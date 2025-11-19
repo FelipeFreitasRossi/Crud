@@ -1,0 +1,657 @@
+/* src/App.css */
+
+/* --- IMPORTAÇÕES NECESSÁRIAS PARA O CARROSSEL (slick-carousel) --- */
+@import "slick-carousel/slick/slick.css"; 
+@import "slick-carousel/slick/slick-theme.css";
+
+/* --- RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- ESTILOS GLOBAIS (Fundo Preto Profundo) --- */
+body {
+    background-color: #000000; /* Preto puro */
+    color: #FFFFFF; /* Cor de texto branca */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.landing-container {
+    width: 100vw;
+    max-width: 100%;
+}
+
+section {
+    padding: 100px 5vw;
+    text-align: center;
+}
+
+/* --- HEADER STYLES --- */
+.main-header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5vw;
+    /* Fundo mais sutil e maior blur */
+    background-color: rgba(0, 0, 0, 0.7); 
+    backdrop-filter: blur(10px); 
+    z-index: 10; 
+    /* Sombra para dar sensação de flutuação */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+    border-bottom: 1px solid rgba(255, 215, 0, 0.05); /* Linha quase invisível (Amarelo Mostarda) */
+}
+
+/* Estiliza o contêiner e a imagem da logo */
+.logo-container {
+    height: 40px; /* Mantém a altura do Header */
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 40px; /* Altura da imagem */
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+}
+
+.site-logo:hover {
+    opacity: 0.8;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-auth {
+    padding: 8px 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #FFFFFF; /* Texto branco */
+    background: transparent;
+    border: 1px solid rgba(255, 215, 0, 0.5); /* Borda Amarelo Mostarda */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Garante que links <a> com botões não tenham sublinhado */
+    display: inline-block;
+}
+
+.btn-auth:hover {
+    background-color: rgba(255, 215, 0, 0.2); /* Fundo sutil no hover (Amarelo Mostarda) */
+    color: white;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Efeito neon ao passar o mouse (Amarelo Mostarda) */
+}
+
+.btn-primary {
+    background-color: #FFD700; /* Amarelo Mostarda Principal */
+    color: black; /* Texto preto para contraste no amarelo */
+    border-color: #FFD700;
+}
+
+.btn-primary:hover {
+    background-color: #FFFF00; /* Amarelo Mostarda Claro (Secundário) */
+    border-color: #FFFF00;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 1);
+}
+
+/* --- DESIGN HAMBURGUER PROFISSIONAL --- */
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px; 
+    z-index: 11;
+    border-radius: 4px;
+    transition: none; 
+}
+
+.menu-toggle:hover {
+    /* Sem box-shadow no hover */
+}
+
+.burger-icon .line {
+    display: block;
+    width: 28px; 
+    height: 2px; 
+    margin: 6px 0; 
+    background-color: #FFFFFF; /* Branco */
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+    text-shadow: 0 0 5px #FFD700; /* Efeito neon nas linhas (Amarelo Mostarda) */
+}
+
+/* Animação do Hamburguer (Virar X) */
+.burger-icon.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-icon.active .line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.burger-icon.active .line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- SIDENAVBAR STYLES --- */
+
+.side-navbar {
+    position: fixed; top: 0; right: 0; width: 300px; height: 100%;
+    background-color: rgba(0, 0, 0, 0.98); 
+    backdrop-filter: blur(12px); 
+    box-shadow: -8px 0 20px rgba(0, 0, 0, 0.7);
+    z-index: 9; padding: 80px 20px 20px; display: flex; flex-direction: column; justify-content: space-between; 
+}
+
+.menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.7; z-index: 8; }
+.nav-links-list { list-style: none; padding: 0; margin: 0; }
+.nav-links-list li { margin: 20px 0; }
+.nav-links-list a { text-decoration: none; color: #FFFFFF; font-size: 1.4em; font-weight: 500; transition: color 0.3s ease; display: block; padding: 10px; border-radius: 5px; }
+.nav-links-list a:hover { color: #FFD700; background-color: rgba(255, 215, 0, 0.1); } /* Hover Amarelo Mostarda */
+.language-switcher { padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.lang-btn { width: 100%; padding: 12px; background-color: transparent; border: 1px solid #FFFFFF; color: #FFFFFF; border-radius: 5px; cursor: pointer; font-size: 1em; transition: all 0.3s ease; }
+.lang-btn:hover { background-color: #FFD700; border-color: #FFD700; color: black; } /* Hover Amarelo Mostarda */
+.lang-icon { margin-right: 8px; }
+
+
+/* --- HERO SECTION STYLES --- */
+
+.hero-section {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #000000 0%, #0a0a10 100%); 
+    position: relative; 
+    overflow: hidden; 
+    padding-top: 80px; 
+}
+
+/* EFEITO DE FUNDO CONTÍNUO (Amarelo Mostarda) */
+.hero-background-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(circle at center, rgba(255, 215, 0, 0.08) 0%, transparent 60%); 
+    animation: intensePulse 4s infinite alternate; 
+}
+
+.hero-background-effect::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%; 
+    height: 300%;
+    background: repeating-linear-gradient(
+        -60deg,
+        transparent,
+        transparent 30px,
+        rgba(255, 215, 0, 0.03) 31px, 
+        rgba(255, 215, 0, 0.03) 35px
+    );
+    animation: fastSlideBackground 25s linear infinite; 
+    transform: translate(-50%, -50%);
+}
+
+@keyframes intensePulse {
+    0% { transform: scale(1.05); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0.8; }
+}
+
+@keyframes fastSlideBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: -800px 800px; } 
+}
+/* FIM EFEITO DE FUNDO */
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative; 
+    z-index: 2; 
+    height: 100%;
+    padding: 0 5vw;
+}
+
+.hero-content h1 { font-size: 4em; margin-bottom: 20px; letter-spacing: 5px; color: #FFFFFF; z-index: 2; position: relative; }
+.hero-content p { font-size: 1.5em; margin-bottom: 40px; z-index: 2; position: relative; }
+.hero-content .shop-name { font-size: 1.2em; color: #FFD700; margin-bottom: 10px; z-index: 2; position: relative; } /* Amarelo Mostarda */
+.hero-content button { 
+    padding: 15px 30px; 
+    font-size: 1.2em; 
+    font-weight: bold; 
+    color: black; 
+    background: #FFD700; /* Amarelo Mostarda Principal */
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background 0.3s ease; 
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); 
+    z-index: 2; 
+    position: relative; 
+}
+.hero-content button:hover { background: #FFFF00; } /* Amarelo Mostarda Claro */
+
+/* --- HIGHLIGHT SECTION (CAROUSEL) --- */
+
+.highlight-section {
+    background-color: #0a0a10; 
+    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Amarelo Mostarda */
+}
+
+.highlight-section h2 { font-size: 2.5em; color: #FFFFFF; margin-bottom: 20px; }
+
+.highlight-subtitle {
+    font-size: 1.1em;
+    color: #E0E0E0; /* Cinza claro */
+    margin-bottom: 40px;
+}
+
+.carousel-container {
+    width: 95%; /* Aumentado ligeiramente para ocupar mais espaço */
+    max-width: 1300px; /* Maior largura máxima */
+    margin: 0 auto 50px;
+    padding: 0 10px;
+}
+
+.carousel-slide {
+    padding: 0 15px; /* Mais espaço entre os slides */
+    outline: none; 
+}
+
+.slide-content {
+    background-color: #1a1a2e;
+    border-radius: 15px; /* Bordas mais suaves */
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animação mais suave */
+    border: 2px solid transparent; /* Borda transparente inicial */
+    cursor: pointer;
+    position: relative;
+}
+
+/* Efeito de Destaque no Hover */
+.slide-content:hover {
+    transform: translateY(-8px) scale(1.02); /* Movimento mais perceptível */
+    box-shadow: 0 18px 30px rgba(255, 215, 0, 0.4), /* Sombra Amarelo Mostarda mais intensa */
+                0 0 0 2px #FFD700; /* Borda neon amarela visível no hover */
+    background-color: #24243d; /* Fundo ligeiramente mais claro no hover */
+}
+
+.slide-image-container {
+    height: 350px; /* Aumentar um pouco a altura para as imagens */
+    background-color: #0d0d18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9); /* Imagens um pouco mais claras */
+    transition: filter 0.4s ease;
+}
+
+.slide-content:hover .slide-image {
+    filter: brightness(1); /* Brilho total no hover */
+}
+
+.slide-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.slide-details h3 {
+    font-size: 1.4em;
+    color: #FFFFFF;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.slide-content:hover .slide-details h3 {
+    color: #FFD700; /* Amarelo Mostarda no título do hover */
+}
+
+/* Estilizando os botões e pontos do react-slick (Amarelo Mostarda) */
+.slick-prev:before, .slick-next:before {
+    color: #FFD700 !important; /* Cor dos botões de navegação (Amarelo Mostarda) */
+    font-size: 35px !important; /* Aumentar o tamanho */
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+}
+
+.slick-prev {
+    left: -30px; /* Posicionar fora do container */
+}
+.slick-next {
+    right: -30px; /* Posicionar fora do container */
+}
+
+/* Pontos de navegação */
+.slick-dots li button:before {
+    color: #4a4a6a !important; 
+    font-size: 12px !important; /* Ligeiramente maiores */
+}
+
+.slick-dots li.slick-active button:before {
+    color: #FFD700 !important; /* Cor do ponto ativo (Amarelo Mostarda) */
+}
+
+.view-all-btn {
+    margin-top: 40px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #FFD700; 
+    color: #FFD700; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    background-color: #FFD700; 
+    color: black;
+}
+
+/* --- ABOUT SECTION (Nova Seção) --- */
+.about-section {
+    background-color: #000000;
+    padding: 100px 10vw;
+    text-align: center;
+    max-width: 100%;
+    border-top: 1px solid rgba(255, 215, 0, 0.1); /* Borda Amarelo Mostarda */
+}
+
+.about-section h3 {
+    font-size: 2em;
+    color: #FFD700; /* Amarelo Mostarda */
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #E0E0E0; /* Cinza claro */
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/* --- Categories Section --- */
+.categories-section {
+    background-color: #000000;
+}
+
+.category-list p { 
+    font-size: 1.2em; 
+    color: #FFD700; /* Amarelo Mostarda */
+    margin-top: 15px; 
+}
+
+/* --- FOOTER STYLES --- */
+
+.main-footer-area {
+    background-color: #0d0d18; /* Fundo mais escuro que o corpo */
+    padding: 60px 5vw 40px;
+    color: #FFFFFF; /* Branco */
+    /* Destaque (Borda Amarelo Mostarda) para separar do conteúdo */
+    border-top: 5px solid #FFD700;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-column h3 {
+    color: #FFD700; /* Amarelo Mostarda Principal */
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.4);
+}
+
+.footer-column h4 {
+    color: #FFFFFF; /* Branco */
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.footer-column p.copyright {
+    font-size: 0.85em;
+    color: #6a6a8a;
+    margin-top: 15px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #E0E0E0; /* Cinza claro */
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #FFD700; /* Amarelo Mostarda */
+}
+
+/* Redes Sociais */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: #FFFFFF; /* Branco */
+    font-size: 2em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+.social-icon.instagram:hover {
+    /* Instagram (Amarelo Mostarda) */
+    color: #FFD700; 
+}
+
+.social-icon.whatsapp:hover {
+    /* WhatsApp (Amarelo Mostarda) */
+    color: #FFD700; 
+}
+
+.social-handle {
+    font-size: 0.95em;
+    color: #E0E0E0; /* Cinza claro */
+    margin-top: 10px;
+}
+
+/* Responsividade básica para o Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .footer-column {
+        min-width: 100%;
+    }
+
+    .footer-brand {
+        order: 3; /* Move a marca para o final no mobile */
+    }
+
+    .footer-social, .footer-links {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* --- LOGIN PAGE STYLES --- */
+
+.login-page-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000; 
+    padding: 100px 20px 20px;
+}
+
+.login-box {
+    background-color: #0d0d18; /* Fundo escuro */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); /* Sombra amarela suave */
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.login-box h2 {
+    color: #FFD700; /* Amarelo Mostarda */
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.login-box .subtitle {
+    color: #E0E0E0;
+    margin-bottom: 30px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #333;
+    transition: border-bottom-color 0.3s ease;
+}
+
+.input-group:focus-within {
+    border-bottom-color: #FFD700; /* Destaque amarelo no foco */
+}
+
+.input-icon {
+    color: #E0E0E0;
+    font-size: 1.2em;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.input-group:focus-within .input-icon {
+    color: #FFD700;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1em;
+    outline: none;
+}
+
+.login-form input::placeholder {
+    color: #6a6a8a;
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    /* Usa a classe btn-primary já definida para Amarelo/Preto */
+}
+
+.btn-login .button-icon {
+    margin-right: 10px;
+}
+
+.login-footer .forgot-link {
+    color: #E0E0E0;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.login-footer .forgot-link:hover, .register-link:hover {
+    color: #FFFF00; /* Amarelo Mostarda Claro no hover */
+}
+
+.login-footer p {
+    font-size: 0.9em;
+    color: #E0E0E0;
+}
+
+.login-footer .register-link {
+    color: #FFD700; /* Amarelo Mostarda */
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
