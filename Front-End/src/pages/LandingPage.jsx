@@ -1,5 +1,3 @@
-// src/pages/LandingPage.jsx (com adição do elemento de ruído)
-
 import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next'; 
 import { motion, useScroll, useTransform } from 'framer-motion'; 
