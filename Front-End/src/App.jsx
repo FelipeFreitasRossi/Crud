@@ -6,6 +6,9 @@ import ShopPage from './pages/ShopPage';     // Sua ShopPage (rota: '/shop')
 import LoginPage from './pages/Login'; // Importe conforme o seu path real
 import RegisterPage from './pages/Cadastro'; // Importe conforme o seu path real
 import Footer from './components/Footer';
+import HighlightSlide from './components/HighlightSlide';
+import ProductQuickViewModal from './components/ProductQuickViewModal';
+import Sidebar from './components/SideNavbar';
 
 // Componente Wrapper para lidar com a lógica de exibição do Header
 function AppContent() {
@@ -39,11 +42,9 @@ function AppContent() {
                     />
                     <Route path="/login" element={<LoginPage onLogin={() => setLoggedIn(true)} />} />
                     <Route path="/register" element={<RegisterPage />} />
-                    {/* Adicione outras rotas aqui */}
                 </Routes>
             </main>
 
-            {/* O Footer aparecerá em todas as páginas */}
             <Footer />
         </div>
     );
