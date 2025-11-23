@@ -27,17 +27,6 @@ function Footer() {
           </p>
         </div>
 
-        {/* Coluna 2: Links de Navegação */}
-        <div className="footer-column footer-links">
-          {/* TRADUÇÃO AQUI */}
-          <h4>{t('navigation')}</h4>
-          <ul>
-            <li><a href="#highlight-section">{t('nav_highlights')}</a></li>
-            <li><a href="#about-section">{t('nav_about')}</a></li>
-            <li><a href="#categories-section">{t('nav_categories')}</a></li>
-          </ul>
-        </div>
-
         {/* Coluna 3: Contato e Redes Sociais */}
         <div className="footer-column footer-social">
           {/* TRADUÇÃO AQUI */}

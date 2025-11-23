@@ -3641,6 +3641,88 @@ section {
     }
 }
 
+/* Hero icon floating */
+.hero-icon-float {
+    font-size: 5em;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+}
+
+.hero-subtitle {
+    font-size: 1.1em;
+    color: #9CA3AF;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* Destaque Footer */
+.destaque-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-quick-view {
+    background: transparent;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-quick-view:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #FFD700;
+    transform: translateX(5px);
+}
+
+/* CTA Icon */
+.cta-icon {
+    font-size: 4em;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.8));
+}
+
+.cta-button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Animações adicionais */
+@keyframes float-soft {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+.destaque-card:hover .destaque-image-container {
+    animation: float-soft 3s ease-in-out infinite;
+}
+
+/* Gradientes nos cards */
+.destaque-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top left, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+.destaque-card:hover::before {
+    opacity: 1;
+}
+
 /* ========================================================================
    CHATBOT STYLES - ASSISTENTE VIRTUAL
    ======================================================================== */
@@ -3959,6 +4041,7 @@ section {
     box-shadow: 0 5px 20px rgba(255, 215, 0, 0.5);
 }
 
+/* Responsividade Mobile */
 @media (max-width: 480px) {
     .chatbot-container {
         width: calc(100vw - 20px);
