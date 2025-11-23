@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import LandingPage from './pages/LandingPage';
 import ShopPage from './pages/ShopPage';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Cadastro';
-// import SobreNos from './pages/SobreNos';
+import SobreNos from './pages/SobreNos';
 import Destaques from './pages/Destaque';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
@@ -15,14 +15,14 @@ function AppContent() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [userName, setUserName] = useState('');
 
-    // Rotas onde o Header NÃO deve aparecer
-    const noHeaderPaths = ['/login', '/register']; 
+    // Rotas onde o Header NÃO deve aparecer (Landing, Login, Cadastro)
+    const noHeaderPaths = ['/', '/login', '/register']; 
     
     // Rotas onde o Footer NÃO deve aparecer
     const noFooterPaths = ['/login', '/register'];
     
     // Rotas onde o ChatBot NÃO deve aparecer
-    const noChatBotPaths = ['/login', '/register'];
+    const noChatBotPaths = ['/', '/login', '/register'];
     
     // Verificações
     const shouldShowHeader = !noHeaderPaths.includes(location.pathname);
@@ -48,12 +48,12 @@ function AppContent() {
         localStorage.setItem('loggedIn', 'true');
     };
 
-    // Função para fazer logout
-    const handleLogout = () => {
-        setUserName('');
-        setLoggedIn(false);
-        localStorage.removeItem('userName');
-        localStorage.removeItem('loggedIn');
+    // Componente de Proteção de Rota
+    const ProtectedRoute = ({ children }) => {
+        if (!loggedIn) {
+            return <Navigate to="/login" replace />;
+        }
+        return children;
     };
 
     return (
@@ -61,25 +61,14 @@ function AppContent() {
             
             {/* HEADER - Renderização Condicional */}
             {shouldShowHeader && (
-                <Header 
-                    userName={userName}
-                />
+                <Header userName={userName} />
             )}
             
             {/* CONTEÚDO PRINCIPAL */}
             <main>
                 <Routes>
-                    {/* Landing Page */}
+                    {/* Landing Page - SEM LOGIN */}
                     <Route path="/" element={<LandingPage />} />
-                    
-                    {/* Destaques */}
-                    <Route path="/destaques" element={<Destaques />} />
-                    
-                    {/* Shop Page (Produtos) */}
-                    <Route path="/shop" element={<ShopPage />} />
-                    
-                    {/* Sobre Nós */}
-                    {/* <Route path="/sobre" element={<SobreNos />} /> */}
                     
                     {/* Login Page */}
                     <Route 
@@ -89,6 +78,34 @@ function AppContent() {
                     
                     {/* Register Page */}
                     <Route path="/register" element={<RegisterPage />} />
+                    
+                    {/* ROTAS PROTEGIDAS - REQUEREM LOGIN */}
+                    <Route 
+                        path="/destaques" 
+                        element={
+                            <ProtectedRoute>
+                                <Destaques />
+                            </ProtectedRoute>
+                        } 
+                    />
+                    
+                    <Route 
+                        path="/shop" 
+                        element={
+                            <ProtectedRoute>
+                                <ShopPage />
+                            </ProtectedRoute>
+                        } 
+                    />
+                    
+                    <Route 
+                        path="/sobre" 
+                        element={
+                            <ProtectedRoute>
+                                <SobreNos />
+                            </ProtectedRoute>
+                        } 
+                    />
                 </Routes>
             </main>
 
