@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion'; 
 import '../App.css'; 
 
-function Login() {
+function Login({ onLoginSuccess }) { // ← RECEBE A FUNÇÃO DO APP.JS
     const navigate = useNavigate(); 
 
     const [formData, setFormData] = useState({
@@ -19,7 +19,6 @@ function Login() {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        // Limpa erro ao digitar
         if (error) setError('');
     };
 
@@ -40,8 +39,15 @@ function Login() {
             const data = await response.json();
 
             if (response.ok && response.status === 200) {
+                // SUCESSO NO LOGIN!
                 console.log(`Login bem-sucedido! Olá, ${data.nome || formData.email}.`);
+                
+                // ← CHAMA A FUNÇÃO PASSADA PELO APP.JS
+                onLoginSuccess(data.nome || formData.email);
+                
+                // Redirecionamento para a Shop Page
                 navigate('/shop'); 
+
             } else if (response.status === 401) {
                 setError(data.error || 'E-mail ou senha inválidos.');
             } else {
@@ -57,6 +63,7 @@ function Login() {
     return (
         <div className="auth-split-container">
             
+            {/* COLUNA VISUAL ESQUERDA */}
             <div className="auth-visual-side">
                 <motion.div 
                     className="visual-content"

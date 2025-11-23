@@ -3,10 +3,10 @@
 export const productsData = [
     {
         id: 1,
-        name: "Camisa Fé em Cristo",
-        category: "camisetas",
-        price: 89.90,
-        imageUrl: "camisa-fe.jpg",
+        name: "Oversized São Miguel",
+        category: "oversized",
+        price: 99.90,
+        imageUrl: "../assets/oversizedSaoMiguelF.jpg",
         images: ["camisa-fe.jpg", "camisa-fe-2.jpg", "camisa-fe-3.jpg"],
         description: "Camisa 100% algodão com estampa inspiradora da fé cristã. Design moderno e confortável, perfeita para o dia a dia.",
         details: {

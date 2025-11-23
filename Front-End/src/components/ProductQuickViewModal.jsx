@@ -33,7 +33,7 @@ const ProductQuickViewModal = ({ product, onClose }) => {
     };
 
     // Gera a URL do WhatsApp com a mensagem do produto
-    const whatsappLink = `https://wa.me/559999999999?text=${encodeURIComponent(
+    const whatsappLink = `https://wa.me/559916996167381?text=${encodeURIComponent(
         t('whatsapp_message', { 
             name: product.name, 
             price: product.price.toFixed(2).replace('.', ',') 
