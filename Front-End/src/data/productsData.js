@@ -1,172 +1,163 @@
-// src/data/productsData.js
+import oversizedSaoMiguelFImage from '../assets/oversizedSaoMiguelF.jpg'; // ID 1
+import oversizedSaoMiguelCImage from '../assets/oversizedSaoMiguelC.jpg';
+
+// Blusa Branca Coroa
+import blusaBrancaCoroaCImage from '../assets/blusaBrancaCoroaC.jpg';
+import blusaBrancaCoroaDetalheImage from '../assets/blusaBrancaCoroaDetalhe.jpg';
+import blusaBrancaCoroaFImage from '../assets/blusaBrancaCoroaF.jpg';
+
+// Blusa Preta Coroa
+import blusaPretaCoroaImage from '../assets/blusaPretaCoroa.jpg';
+import blusaPretaCoroaCImage from '../assets/blusaPretaCoroaC.jpg';
+import blusaPretaDetalheImage from '../assets/blusaPretaDetalhe.jpg';
+
+// Oversized Maria Branca
+import oversizedMariaBrancaCImage from '../assets/oversizedMariaBrancaC.jpg';
+import oversizedMariaBrancaFImage from '../assets/oversizedMariaBrancaF.jpg';
+
+// Oversized Maria
+import oversizedMariaCImage from '../assets/oversizedMariaC.jpg';
+import oversizedMariaFImage from '../assets/oversizedMariaF.jpg';
+
+// Oversized São Bento (Variantes)
+import oversizedSaoBento2FImage from '../assets/oversizedSaoBento2F.jpg';
+import oversizedSaoBentoBrancaImage from '../assets/oversizedSaoBentoBranca.jpg';
+import oversizedSaoBentoBrancaCImage from '../assets/oversizedSaoBentoBrancaC.jpg';
+import oversizedSaoBentoCImage from '../assets/oversizedSaoBentoC.jpg';
+import oversizedSaoBentoFImage from '../assets/oversizedSaoBentoF.jpg';
+
 
 export const productsData = [
+    // ---------------------------------------------------
+    // 1. Oversized São Miguel
+    // Preço: 109.99
+    // ---------------------------------------------------
     {
         id: 1,
         name: "Oversized São Miguel",
         category: "oversized",
-        price: 99.90,
-        imageUrl: "../assets/oversizedSaoMiguelF.jpg",
-        images: ["camisa-fe.jpg", "camisa-fe-2.jpg", "camisa-fe-3.jpg"],
-        description: "Camisa 100% algodão com estampa inspiradora da fé cristã. Design moderno e confortável, perfeita para o dia a dia.",
+        price: 109.99, // Aplicado preço de Oversized
+        imageUrl: oversizedSaoMiguelFImage, // Imagem principal (Frente)
+        images: [
+            oversizedSaoMiguelFImage,
+            oversizedSaoMiguelCImage,
+        ],
+        description: "Camisa Oversized 100% algodão com estampa de São Miguel Arcanjo. Peça de fé e estilo.",
         details: {
             material: "100% Algodão Premium",
             dimensoes: "Disponível: P, M, G, GG",
-            cuidados: "Lavar à máquina em água fria"
+            fotos: "F: Frente, C: Costas",
         }
     },
+    
     {
         id: 2,
-        name: "Oversized Cruz Sagrada",
-        category: "oversized",
-        price: 129.90,
-        imageUrl: "oversized-cruz.jpg",
-        images: ["oversized-cruz.jpg", "oversized-cruz-2.jpg"],
-        description: "Oversized com design moderno e símbolo da cruz. Caimento perfeito e muito estilo.",
+        name: "Blusa Branca Coroa",
+        category: "moletom",
+        price: 229.99, // Aplicado preço de Blusa
+        imageUrl: blusaBrancaCoroaFImage, // Imagem principal (Frente)
+        images: [
+            blusaBrancaCoroaFImage,
+            blusaBrancaCoroaCImage,
+            blusaBrancaCoroaDetalheImage,
+        ],
+        description: "Blusa feminina de alta costura com detalhe de coroa. Elegância e devoção em uma única peça.",
         details: {
-            material: "Moletom Premium",
-            dimensoes: "Tamanho Único (veste P ao GG)",
-            cuidados: "Lavar do avesso"
+            material: "Tecido Premium Exclusivo",
+            dimensoes: "Disponível: P, M, G",
+            fotos: "F: Frente, C: Costas, Detalhe: Detalhe da Coroa",
         }
     },
+
     {
         id: 3,
-        name: "Babylook Maria",
-        category: "babylook",
-        price: 79.90,
-        imageUrl: "baby-maria.jpg",
-        images: ["baby-maria.jpg", "baby-maria-2.jpg"],
-        description: "Babylook delicada com estampa de Nossa Senhora. Modelagem feminina e elegante.",
+        name: "Blusa Preta Coroa",
+        category: "moletom",
+        price: 229.99, // Aplicado preço de Blusa
+        imageUrl: blusaPretaCoroaImage, // Imagem principal (Assumindo que é a Frente/Geral)
+        images: [
+            blusaPretaCoroaImage,
+            blusaPretaCoroaCImage,
+            blusaPretaDetalheImage,
+        ],
+        description: "Versão preta da nossa blusa Coroa. Sofisticação para expressar sua fé em qualquer ocasião.",
         details: {
-            material: "Malha PV de alta qualidade",
-            dimensoes: "Disponível: PP, P, M, G",
-            cuidados: "Lavar em água fria"
+            material: "Tecido Premium Exclusivo",
+            dimensoes: "Disponível: P, M, G",
+            fotos: "C: Costas, Detalhe: Detalhe do Produto",
         }
     },
+
     {
         id: 4,
-        name: "Moletom Esperança",
-        category: "moletom",
-        price: 149.90,
-        imageUrl: "moletom-esperanca.jpg",
-        images: ["moletom-esperanca.jpg"],
-        description: "Moletom quentinho com mensagem de esperança. Ideal para os dias frios.",
+        name: "Oversized Maria Branca",
+        category: "oversized",
+        price: 109.99, // Aplicado preço de Oversized
+        imageUrl: oversizedMariaBrancaFImage, // Imagem principal (Frente)
+        images: [
+            oversizedMariaBrancaFImage,
+            oversizedMariaBrancaCImage,
+        ],
+        description: "Oversized branca com estampa da Virgem Maria. Conforto e inspiração para todos os dias.",
         details: {
-            material: "Moletom Flanelado Interno",
-            dimensoes: "Disponível: P, M, G, GG, XGG",
-            cuidados: "Não usar alvejante"
+            material: "100% Algodão Premium",
+            dimensoes: "Disponível: P, M, G, GG",
+            fotos: "F: Frente, C: Costas",
         }
     },
+
     {
         id: 5,
-        name: "Camisa Salmo 23",
-        category: "camisetas",
-        price: 89.90,
-        imageUrl: "camisa-salmo.jpg",
-        images: ["camisa-salmo.jpg", "camisa-salmo-2.jpg"],
-        description: "Camisa com o famoso Salmo 23 - 'O Senhor é meu pastor'. Uma peça cheia de significado.",
+        name: "Oversized Maria (Escura)",
+        category: "oversized",
+        price: 109.99, // Aplicado preço de Oversized
+        imageUrl: oversizedMariaFImage, // Imagem principal (Frente)
+        images: [
+            oversizedMariaFImage,
+            oversizedMariaCImage,
+        ],
+        description: "Oversized na cor escura com arte minimalista de Maria. Tendência e devoção.",
         details: {
-            material: "100% Algodão Penteado",
+            material: "100% Algodão Premium",
             dimensoes: "Disponível: P, M, G, GG",
-            cuidados: "Passar em temperatura média"
+            fotos: "F: Frente, C: Costas",
         }
     },
+    
     {
         id: 6,
-        name: "Oversized Jesus Salva",
+        name: "Oversized São Bento",
         category: "oversized",
-        price: 139.90,
-        imageUrl: "oversized-jesus.jpg",
-        images: ["oversized-jesus.jpg"],
-        description: "Oversized com frase impactante 'Jesus Salva'. Design urbano com propósito.",
+        price: 109.99, // Aplicado preço de Oversized
+        imageUrl: oversizedSaoBentoFImage, // Imagem principal (Frente)
+        images: [
+            oversizedSaoBentoFImage,
+            oversizedSaoBentoCImage,
+            oversizedSaoBento2FImage,
+        ],
+        description: "Oversized com a medalha de São Bento. Peça de proteção e estilo único.",
         details: {
-            material: "Cotton Premium 30.1",
-            dimensoes: "Tamanho Único",
-            cuidados: "Lavar separadamente"
+            material: "100% Algodão Premium",
+            dimensoes: "Disponível: P, M, G, GG",
+            fotos: "F: Frente, C: Costas, 2F: Outro ângulo da Frente",
         }
     },
+
     {
         id: 7,
-        name: "Babylook Anjo da Guarda",
-        category: "babylook",
-        price: 84.90,
-        imageUrl: "baby-anjo.jpg",
-        images: ["baby-anjo.jpg"],
-        description: "Babylook com ilustração delicada do Anjo da Guarda. Perfeita para presentear.",
-        details: {
-            material: "Malha PV",
-            dimensoes: "Disponível: PP, P, M, G",
-            cuidados: "Não usar secadora"
-        }
-    },
-    {
-        id: 8,
-        name: "Moletom Paz de Cristo",
-        category: "moletom",
-        price: 159.90,
-        imageUrl: "moletom-paz.jpg",
-        images: ["moletom-paz.jpg"],
-        description: "Moletom com capuz e frase 'A Paz de Cristo'. Conforto e estilo em uma peça.",
-        details: {
-            material: "Moletom Flanelado Premium",
-            dimensoes: "Disponível: P, M, G, GG, XGG",
-            cuidados: "Lavar com cores similares"
-        }
-    },
-    {
-        id: 9,
-        name: "Camisa Cruz Minimalista",
-        category: "camisetas",
-        price: 79.90,
-        imageUrl: "camisa-cruz-mini.jpg",
-        images: ["camisa-cruz-mini.jpg"],
-        description: "Design minimalista com cruz discreta. Elegância e fé em harmonia.",
-        details: {
-            material: "100% Algodão Orgânico",
-            dimensoes: "Disponível: P, M, G, GG, XGG",
-            cuidados: "Secar à sombra"
-        }
-    },
-    {
-        id: 10,
-        name: "Oversized Cordeiro de Deus",
+        name: "Oversized São Bento Branca",
         category: "oversized",
-        price: 134.90,
-        imageUrl: "oversized-cordeiro.jpg",
-        images: ["oversized-cordeiro.jpg"],
-        description: "Oversized com arte exclusiva do Cordeiro de Deus. Peça única e especial.",
+        price: 109.99, // Aplicado preço de Oversized
+        imageUrl: oversizedSaoBentoBrancaImage, // Imagem principal (Geral/Frente)
+        images: [
+            oversizedSaoBentoBrancaImage,
+            oversizedSaoBentoBrancaCImage,
+        ],
+        description: "Versão branca do nosso sucesso São Bento. Perfeita para um look clean e cheio de fé.",
         details: {
-            material: "Cotton Premium",
-            dimensoes: "Tamanho Único (veste M ao GG)",
-            cuidados: "Lavar do avesso em água fria"
-        }
-    },
-    {
-        id: 11,
-        name: "Babylook Flor de Lis",
-        category: "babylook",
-        price: 79.90,
-        imageUrl: "baby-lis.jpg",
-        images: ["baby-lis.jpg"],
-        description: "Babylook com símbolo da Flor de Lis. Delicadeza e simbolismo católico.",
-        details: {
-            material: "Malha 30.1",
-            dimensoes: "Disponível: PP, P, M, G",
-            cuidados: "Lavar com sabão neutro"
-        }
-    },
-    {
-        id: 12,
-        name: "Moletom Terço Sagrado",
-        category: "moletom",
-        price: 169.90,
-        imageUrl: "moletom-terco.jpg",
-        images: ["moletom-terco.jpg"],
-        description: "Moletom premium com estampa de terço. Conforto máximo e muito estilo.",
-        details: {
-            material: "Moletom Peluciado Interno",
-            dimensoes: "Disponível: P, M, G, GG, XGG",
-            cuidados: "Não torcer ao lavar"
+            material: "100% Algodão Premium",
+            dimensoes: "Disponível: P, M, G, GG",
+            fotos: "C: Costas",
         }
     }
 ];

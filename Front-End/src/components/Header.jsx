@@ -44,19 +44,21 @@ function Header({ userName }) {
                     <nav className="desktop-nav-links">
 
                         <Link 
-                            to="/destaques" 
-                            className={`btn-nav ${isActive('/destaques') ? 'active' : ''}`}
-                        >
-                            <span className="nav-icon">⭐</span>
-                            Destaques
-                        </Link>
-                        <Link 
                             to="/shop" 
                             className={`btn-nav ${isActive('/shop') ? 'active' : ''}`}
                         >
                             <span className="nav-icon">🛍️</span>
                             Produtos
                         </Link>
+                        
+                        <Link 
+                            to="/destaques" 
+                            className={`btn-nav ${isActive('/destaques') ? 'active' : ''}`}
+                        >
+                            <span className="nav-icon">⭐</span>
+                            Destaques
+                        </Link>
+
                         <Link 
                             to="/sobre" 
                             className={`btn-nav ${isActive('/sobre') ? 'active' : ''}`}

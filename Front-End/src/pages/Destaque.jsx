@@ -5,6 +5,31 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import logoImage from '../assets/SantoPresenteLogo.svg'; 
 
+// 📸 SEUS IMPORTS DE ASSETS DE IMAGEM
+// Oversized São Miguel
+import oversizedSaoMiguelFImage from '../assets/oversizedSaoMiguelF.jpg'; 
+// import oversizedSaoMiguelCImage from '../assets/oversizedSaoMiguelC.jpg'; // Não está em uso no destaque
+
+// Blusa Branca Coroa
+import blusaBrancaCoroaFImage from '../assets/blusaBrancaCoroaF.jpg'; 
+
+// Blusa Preta Coroa
+import blusaPretaCoroaImage from '../assets/blusaPretaCoroa.jpg';
+
+// Oversized Maria Branca
+import oversizedMariaBrancaFImage from '../assets/oversizedMariaBrancaF.jpg';
+
+// Oversized Maria
+import oversizedMariaFImage from '../assets/oversizedMariaF.jpg';
+
+// Oversized São Bento (Variantes)
+import oversizedSaoBento2FImage from '../assets/oversizedSaoBento2F.jpg';
+
+// ⚠️ IMPORT ADICIONAL DE MOLETOM (Garantir que este asset exista)
+// Se você tiver um import de moletom na sua pasta de assets, substitua 'imagemMoletomGenerico' pelo nome do seu import.
+import imagemMoletomGenerico from '../assets/blusa70x7PretaF.jpg'; 
+
+
 function Destaques() {
     const navigate = useNavigate();
 
@@ -17,67 +42,73 @@ function Destaques() {
         });
     }, []);
 
-    // Produtos em Destaque
+    // 🌟 PRODUTOS EM DESTAQUE (Preços e Categorias Corrigidos) 🌟
     const produtosDestaque = [
+        // 1. BLUSA BRANCA COROA (CAMISETA)
         {
             id: 1,
-            name: "Camisa Fé em Cristo",
-            category: "Camiseta",
-            price: 89.90,
-            imageUrl: "camisa-fe.jpg",
-            badge: "🔥 Mais Vendido",
-            badgeColor: "#FF6B6B",
-            description: "Nossa camiseta mais popular! Design moderno e confortável que expressa sua fé com estilo."
+            name: "Blusa Coroa Branca", 
+            category: "moletom", // CATEGORIA CORRIGIDA
+            price: 229.99, // PREÇO CORRIGIDO
+            imageUrl: blusaBrancaCoroaFImage, 
+            badge: "👑 Novo Destaque",
+            badgeColor: "#F3C53C",
+            description: "Design minimalista e elegante com a coroa sagrada. Conforto e fé para o seu dia."
         },
+        // 2. BLUSA PRETA COROA (CAMISETA)
         {
             id: 2,
-            name: "Oversized Cruz Sagrada",
-            category: "Oversized",
-            price: 129.90,
-            imageUrl: "oversized-cruz.jpg",
-            badge: "✨ Novo",
-            badgeColor: "#4ECDC4",
-            description: "Lançamento exclusivo! Estilo urbano com propósito. Caimento perfeito e design impactante."
+            name: "Blusa Coroa Preta",
+            category: "moletom", // CATEGORIA CORRIGIDA
+            price: 229.99, // PREÇO CORRIGIDO
+            imageUrl: blusaPretaCoroaImage, 
+            badge: "🖤 Clássico",
+            badgeColor: "#4E4E4E",
+            description: "A cor preta realça a estampa da coroa. Peça essencial, moderna e de alta qualidade."
         },
+        // 3. OVERSIZED MARIA BRANCA (OVERSIZED)
         {
             id: 3,
-            name: "Babylook Maria",
-            category: "Babylook",
-            price: 79.90,
-            imageUrl: "baby-maria.jpg",
-            badge: "💫 Destaque",
-            badgeColor: "#FFD93D",
-            description: "Delicadeza e fé em uma peça única. Modelagem feminina e elegante para todas as ocasiões."
+            name: "Oversized Maria Branca",
+            category: "Oversized", // CATEGORIA CORRIGIDA
+            price: 109.99, // PREÇO CORRIGIDO (Ajustado para o valor de Oversized)
+            imageUrl: oversizedMariaBrancaFImage, 
+            badge: "✨ Novo",
+            badgeColor: "#4ECDC4",
+            description: "Homenagem à Virgem Maria com um caimento moderno. Perfeita para quem busca estilo e devoção."
         },
+        // 4. OVERSIZED SÃO BENTO (OVERSIZED)
         {
             id: 4,
+            name: "Oversized São Bento",
+            category: "Oversized", // CATEGORIA CORRIGIDA
+            price: 109.99, // PREÇO CORRIGIDO
+            imageUrl: oversizedSaoBento2FImage, 
+            badge: "🛡️ Proteção",
+            badgeColor: "#FF6B6B",
+            description: "Com a poderosa Medalha de São Bento. Qualidade premium e caimento impecável."
+        },
+        // 5. MOLETOM ESPERANÇA (BLUSA DE FRIO)
+        {
+            id: 5,
             name: "Moletom Esperança",
-            category: "Blusa de Frio",
-            price: 149.90,
-            imageUrl: "moletom-esperanca.jpg",
+            category: "Blusa de Frio", // CATEGORIA CORRIGIDA
+            price: 229.99, // PREÇO CORRIGIDO (Ajustado para um valor de Moletom)
+            imageUrl: imagemMoletomGenerico, 
             badge: "❄️ Inverno",
             badgeColor: "#6BCB77",
             description: "Perfeito para os dias frios! Conforto máximo e mensagem inspiradora. Qualidade premium."
         },
-        {
-            id: 5,
-            name: "Camisa Salmo 23",
-            category: "Camiseta",
-            price: 89.90,
-            imageUrl: "camisa-salmo.jpg",
-            badge: "📿 Inspiradora",
-            badgeColor: "#A8E6CF",
-            description: "O salmo mais amado estampado com arte exclusiva. Evangelize através da moda."
-        },
+        // 6. OVERSIZED SÃO MIGUEL (OVERSIZED)
         {
             id: 6,
-            name: "Oversized Jesus Salva",
-            category: "Oversized",
-            price: 139.90,
-            imageUrl: "oversized-jesus.jpg",
-            badge: "⭐ Premium",
+            name: "Oversized São Miguel",
+            category: "Oversized", // CATEGORIA CORRIGIDA
+            price: 109.99, // PREÇO CORRIGIDO
+            imageUrl: oversizedSaoMiguelFImage, 
+            badge: "🔥 Mais Vendido",
             badgeColor: "#FFD700",
-            description: "Frase poderosa em design impactante. Espalhe a mensagem de Cristo com estilo único."
+            description: "Arcanjo Miguel em destaque. Design marcante para expressar sua fé e proteção."
         }
     ];
 
@@ -89,7 +120,7 @@ function Destaques() {
     return (
         <div className="destaques-page-container">
             
-            {/* HERO SECTION MELHORADO */}
+            {/* HERO SECTION */}
             <section className="destaques-hero-section">
                 <motion.div 
                     className="destaques-hero-content"
@@ -120,6 +151,7 @@ function Destaques() {
                     </motion.div>
                 </motion.div>
             </section>
+            
 
             {/* INTRO COM ANIMAÇÃO */}
             <section className="destaques-intro" data-aos="fade-up">
@@ -138,8 +170,9 @@ function Destaques() {
                     </p>
                 </motion.div>
             </section>
+            
 
-            {/* GRID DE PRODUTOS DESTAQUE MELHORADO */}
+            {/* GRID DE PRODUTOS DESTAQUE */}
             <section className="destaques-produtos-section">
                 <div className="destaques-grid">
                     {produtosDestaque.map((produto, index) => (
@@ -166,12 +199,9 @@ function Destaques() {
                             {/* Imagem com efeitos */}
                             <div className="destaque-image-container">
                                 <motion.img 
-                                    src={`/assets/images/${produto.imageUrl}`}
+                                    src={produto.imageUrl} 
                                     alt={produto.name}
                                     className="destaque-image"
-                                    onError={(e) => {
-                                        e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/FFD700?text=Produto+em+Destaque';
-                                    }}
                                     whileHover={{ scale: 1.15, rotate: 2 }}
                                     transition={{ duration: 0.5 }}
                                 />
@@ -213,8 +243,9 @@ function Destaques() {
                     ))}
                 </div>
             </section>
+            
 
-            {/* POR QUE ESCOLHER MELHORADO */}
+            {/* POR QUE ESCOLHER */}
             <section className="porque-section" data-aos="fade-up">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
@@ -251,7 +282,8 @@ function Destaques() {
                 </div>
             </section>
 
-            {/* CATEGORIAS MELHORADAS */}
+
+            {/* CATEGORIAS */}
             <section className="categorias-destaques-section" data-aos="fade-up">
                 <h2>Explore Todas as Categorias</h2>
                 <p className="categorias-subtitle">Encontre o produto perfeito para você</p>
@@ -285,7 +317,8 @@ function Destaques() {
                 </div>
             </section>
 
-            {/* CTA FINAL MELHORADO */}
+
+            {/* CTA FINAL */}
             <section className="cta-section" data-aos="zoom-in">
                 <motion.div 
                     className="cta-content"
@@ -299,7 +332,7 @@ function Destaques() {
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                         className="cta-icon"
                     >
-                   </motion.div>
+                    </motion.div>
                     <h2>Pronto para Expressar sua Fé?</h2>
                     <p>Explore toda nossa coleção e encontre a peça perfeita que toca seu coração</p>
                     <motion.button
