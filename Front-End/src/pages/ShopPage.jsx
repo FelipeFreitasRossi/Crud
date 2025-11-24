@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductQuickViewModal from '../components/ProductQuickViewModal';
-import productsData from '../data/productsData'; // ← Importa os dados
+import productsData from '../data/productsData'; 
 
 function ShopPage() {
     const { t } = useTranslation();
@@ -76,6 +76,8 @@ function ShopPage() {
                             >
                                 Oversized
                             </button>
+ 
+                            {/* Mantendo os filtros antigos para consistência, caso ainda existam no data */}
                             <button 
                                 className={`filter-btn ${selectedCategory === 'babylook' ? 'active' : ''}`}
                                 onClick={() => setSelectedCategory('babylook')}
@@ -86,7 +88,7 @@ function ShopPage() {
                                 className={`filter-btn ${selectedCategory === 'moletom' ? 'active' : ''}`}
                                 onClick={() => setSelectedCategory('moletom')}
                             >
-                                Blusas de Frio
+                                Moletom
                             </button>
                         </div>
                     </aside>
@@ -146,6 +148,7 @@ function ShopPage() {
                                         >
                                             Oversized
                                         </button>
+                                        {/* 🟢 ADICIONADO FILTRO MOBILE: BLUSAS */}
                                         <button 
                                             className={`filter-btn ${selectedCategory === 'babylook' ? 'active' : ''}`}
                                             onClick={() => {
@@ -162,7 +165,7 @@ function ShopPage() {
                                                 setIsMobileFilterOpen(false);
                                             }}
                                         >
-                                            Blusas de Frio
+                                            Moletom
                                         </button>
                                     </div>
                                 </motion.aside>
@@ -177,6 +180,7 @@ function ShopPage() {
                             <h2>
                                 {selectedCategory === 'todos' 
                                     ? 'Todos os Produtos' 
+                                    // Capitaliza a categoria
                                     : `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}`
                                 }
                             </h2>
@@ -195,17 +199,19 @@ function ShopPage() {
                                 >
                                     <div className="card-image-container">
                                         <img 
-                                            src={`/assets/images/${product.imageUrl}`} 
+
+                                            src={product.imageUrl} 
                                             alt={product.name}
                                             className="card-image"
                                             onError={(e) => {
+                                                // Garante que o fallback funciona
                                                 e.target.src = 'https://via.placeholder.com/400x400/1a1a2e/FFD700?text=Produto';
                                             }}
                                         />
                                     </div>
                                     
                                     <div className="card-details">
-                                        <p className="product-category">{product.category}</p>
+                                        <p className="product-category">{product.category.toUpperCase()}</p>
                                         <h3>{product.name}</h3>
                                         <p className="product-price">
                                             R$ {product.price.toFixed(2).replace('.', ',')}

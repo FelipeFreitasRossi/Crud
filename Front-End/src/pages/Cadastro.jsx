@@ -1,32 +1,40 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; 
-import '../App.css';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion'; 
+// A "AnimatePresence" foi removida, pois não é necessária sem o pop-up
+import '../App.css'; 
+// Importe o 'useNavigate' se estiver usando o React Router para redirecionamento:
+// import { useNavigate } from 'react-router-dom'; 
 
 function Cadastro() {
+    // Se estivesse usando o React Router: const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         nome: '',
         email: '',
         senha: ''
     });
 
+    // Mantive os estados do pop-up, mas eles não são usados no JSX
     const [showPopup, setShowPopup] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
     const [successUserName, setSuccessUserName] = useState(''); 
+    
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [focusedField, setFocusedField] = useState('');
     
+    // URL da API
     const API_URL = "http://localhost:8080/api/auth/register"; 
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        // Limpa erro ao digitar
         if (error) setError('');
     };
 
     const handleClosePopup = () => {
         setShowPopup(false);
-        // Opcional: navigate('/login');
+        // Coloque aqui o redirecionamento para o login, se necessário:
+        // navigate('/login'); 
     };
 
     const handleSubmit = async (e) => {
@@ -47,13 +55,16 @@ function Cadastro() {
             const data = await response.json();
 
             if (response.ok && response.status === 201) {
+                // Cadastro bem-sucedido
                 const nomeCadastrado = data.nome || formData.nome; 
-                
                 setSuccessUserName(nomeCadastrado);
-                setPopupMessage('Seu cadastro foi concluído com sucesso! Você já pode fazer login.');
-                setShowPopup(true);
+                setPopupMessage('Seu cadastro foi concluído com sucesso! Redirecionando para o login...');
                 
+                // Limpa o formulário
                 setFormData({ nome: '', email: '', senha: '' });
+                
+                // 🚀 Ação após o sucesso: Redirecionar
+                // Idealmente, você chamaria: navigate('/login');
                 
             } else if (response.status === 409) {
                 setError(data.error || 'Este e-mail já está cadastrado em nosso sistema.');
@@ -63,12 +74,31 @@ function Cadastro() {
         } catch (err) {
             setError('Não foi possível conectar ao servidor. Verifique sua conexão ou se o Back-End está online.');
         } finally {
-             setIsLoading(false); 
+            setIsLoading(false); 
         }
     };
+    
+    // O useEffect relacionado ao modal-open pode ser removido, pois o modal foi removido
+    useEffect(() => {
+        // Se a classe modal-open estiver no seu CSS, remova o código abaixo
+        // para evitar manipulação desnecessária do body.
+        /*
+        if (showPopup) {
+            document.body.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+        }
+
+        return () => {
+            document.body.classList.remove('modal-open');
+        };
+        */
+    }, [showPopup]);
+
 
     return (
-        <div className="auth-split-container">
+        // O container principal, que será 100% da tela
+        <div className="auth-split-container"> 
             
             {/* COLUNA VISUAL ESQUERDA */}
             <div className="auth-visual-side">
@@ -178,7 +208,6 @@ function Cadastro() {
                             <div className="input-border-effect"></div>
                         </div>
                         
-                        {/* Botão Submit */}
                         <motion.button 
                             type="submit" 
                             disabled={isLoading}
@@ -194,12 +223,11 @@ function Cadastro() {
                             ) : (
                                 <>
                                     <span>Cadastrar</span>
-                                    <span className="btn-arrow">→</span>
+                                    <span className="btn-arrow"></span>
                                 </>
                             )}
                         </motion.button>
 
-                        {/* Link para login */}
                         <div className="auth-divider">
                             <span>ou</span>
                         </div>
@@ -209,49 +237,10 @@ function Cadastro() {
                             <a href="/login">Faça Login</a>
                         </p>
                     </form>
-
-                    {/* POP-UP DE SUCESSO MELHORADO */}
-                    <AnimatePresence>
-                        {showPopup && (
-                            <>
-                                <motion.div 
-                                    className="popup-overlay-enhanced"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    onClick={handleClosePopup}
-                                />
-                                <motion.div 
-                                    className="popup-content-enhanced"
-                                    initial={{ opacity: 0, scale: 0.8, y: -50 }}
-                                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.8, y: -50 }}
-                                    transition={{ type: "spring", duration: 0.5 }}
-                                >
-                                    <div className="popup-success-icon">✓</div>
-                                    
-                                    <h2>Cadastro Concluído!</h2>
-                                    
-                                    <div className="popup-body-enhanced">
-                                        <p className="popup-greeting">Olá, <strong>{successUserName}</strong>!</p>
-                                        <p>{popupMessage}</p>
-                                    </div>
-                                    
-                                    <motion.button 
-                                        onClick={handleClosePopup}
-                                        className="btn-popup-enhanced"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        Ir para o Login
-                                    </motion.button>
-                                </motion.div>
-                            </>
-                        )}
-                    </AnimatePresence>
                 </motion.div>
             </div>
-        </div>
+            
+        </div> 
     );
 }
 

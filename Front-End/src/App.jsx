@@ -79,7 +79,6 @@ function AppContent() {
                     {/* Register Page */}
                     <Route path="/register" element={<RegisterPage />} />
                     
-                    {/* ROTAS PROTEGIDAS - REQUEREM LOGIN */}
                     <Route 
                         path="/destaques" 
                         element={

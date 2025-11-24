@@ -187,7 +187,7 @@ function SobreNos() {
                         </motion.div>
                         <h3>WhatsApp</h3>
                         <p>Atendimento rápido e personalizado</p>
-                        <p className="contato-info">(11) 99999-9999</p>
+                        <p className="contato-info">(16) 99616-7381</p>
                         <motion.a 
                             href="https://wa.me/5516996167381" 
                             target="_blank" 
