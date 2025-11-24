@@ -77,34 +77,31 @@ function Destaques() {
             badgeColor: "#4ECDC4",
             description: "Homenagem à Virgem Maria com um caimento moderno. Perfeita para quem busca estilo e devoção."
         },
-        // 4. OVERSIZED SÃO BENTO (OVERSIZED)
         {
             id: 4,
             name: "Oversized São Bento",
-            category: "Oversized", // CATEGORIA CORRIGIDA
-            price: 109.99, // PREÇO CORRIGIDO
+            category: "Oversized", 
+            price: 109.99, 
             imageUrl: oversizedSaoBento2FImage, 
             badge: "🛡️ Proteção",
             badgeColor: "#FF6B6B",
             description: "Com a poderosa Medalha de São Bento. Qualidade premium e caimento impecável."
         },
-        // 5. MOLETOM ESPERANÇA (BLUSA DE FRIO)
         {
             id: 5,
             name: "Moletom Esperança",
-            category: "Blusa de Frio", // CATEGORIA CORRIGIDA
-            price: 229.99, // PREÇO CORRIGIDO (Ajustado para um valor de Moletom)
+            category: "Blusa de Frio", 
+            price: 229.99, 
             imageUrl: imagemMoletomGenerico, 
             badge: "❄️ Inverno",
             badgeColor: "#6BCB77",
             description: "Perfeito para os dias frios! Conforto máximo e mensagem inspiradora. Qualidade premium."
         },
-        // 6. OVERSIZED SÃO MIGUEL (OVERSIZED)
         {
             id: 6,
             name: "Oversized São Miguel",
-            category: "Oversized", // CATEGORIA CORRIGIDA
-            price: 109.99, // PREÇO CORRIGIDO
+            category: "Oversized", 
+            price: 109.99, 
             imageUrl: oversizedSaoMiguelFImage, 
             badge: "🔥 Mais Vendido",
             badgeColor: "#FFD700",
@@ -120,7 +117,6 @@ function Destaques() {
     return (
         <div className="destaques-page-container">
             
-            {/* HERO SECTION */}
             <section className="destaques-hero-section">
                 <motion.div 
                     className="destaques-hero-content"
@@ -153,7 +149,6 @@ function Destaques() {
             </section>
             
 
-            {/* INTRO COM ANIMAÇÃO */}
             <section className="destaques-intro" data-aos="fade-up">
                 <motion.div 
                     className="intro-content"
